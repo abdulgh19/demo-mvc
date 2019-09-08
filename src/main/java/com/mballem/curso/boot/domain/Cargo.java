@@ -8,15 +8,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "cargo")
 public class Cargo extends AbstractEntity<Long> {
 	
+	@NotBlank(message = "Informe um nome!")
+	@Size(max = 45, message = "O nome do Cargo deve no maximo 60 caracteres!")
 	@Column(name = "nome", nullable = false, unique = true, length = 60)
 	private String nome;
 	
+	@NotNull(message = "Selecione o Departamento relativo ao cargo!")
 	@ManyToOne
 	@JoinColumn(name = "id_departamento_fk")
 	private Departamento departamento;

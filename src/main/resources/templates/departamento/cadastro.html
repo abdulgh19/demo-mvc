@@ -26,6 +26,8 @@
 				th:object="${departamento}" method="POST">
 				<!-- a variavel Object departamento vai ser responsavel por enviar os dados para o controller em forma de objecto de departamento -->
 
+				<div th:replace="fragments/validacao :: validacao"></div>	
+							
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="nome">Departamento</label> <input type="text"
