@@ -32,19 +32,19 @@ public class CargoController {
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Cargo cargo) {
-		return "/cargo/cadastro";
+		return "cargo/cadastro";
 	}
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
 		model.addAttribute("cargos", cargoService.buscarTodos()); //"cargos" eh a variavel que eh mandada para os cargos!
-		return "/cargo/lista";
+		return "cargo/lista";
 	}
 	
 	@PostMapping("/salvar")
 	public String salvar(@Valid Cargo cargo, BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
-			return "/cargo/cadastro";
+			return "cargo/cadastro";
 		}
 		cargoService.salvar(cargo);
 		attr.addFlashAttribute("success", "Cargo registado com Sucesso!");
@@ -54,13 +54,13 @@ public class CargoController {
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Pega uum id na URL e transforma em LONG depois busca o cargo com aquele ID e retorna a tela de cadastro com o(s) campo(s) preenchido(s)
 		model.addAttribute("cargo", cargoService.buscarPorId(id));
-		return "/cargo/cadastro";
+		return "cargo/cadastro";
 	}
 
 	@PostMapping("/editar")
 	public String editar(@Valid Cargo cargo,BindingResult result, RedirectAttributes attr) { //@Valid informa ao sring que estamos realizando a validaco via bean validation
 		if(result.hasErrors()) {
-			return "/cargo/cadastro";
+			return "cargo/cadastro";
 		}
 		cargoService.editar(cargo);
 		attr.addFlashAttribute("success", "Cargo actualizado com Sucesso!");

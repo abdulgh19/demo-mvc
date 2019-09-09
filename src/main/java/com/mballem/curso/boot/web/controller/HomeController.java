@@ -8,7 +8,7 @@ public class HomeController {
 	
 	@GetMapping("/") 		//Acessa a raiz do projecto
 	public String home() {
-		return "/home";
+		return "home";
 	}
 
 }

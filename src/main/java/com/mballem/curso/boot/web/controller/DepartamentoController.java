@@ -24,20 +24,20 @@ public class DepartamentoController {
 
 	@GetMapping("/cadastrar")
 	public String cadastrar(Departamento departamento) { // Este metodo abre a pagina de cadastrar departamentos
-		return "/departamento/cadastro";
+		return "departamento/cadastro";
 	}
 
 	@GetMapping("/listar")
 	public String listar(ModelMap model) { // Este metodo abre a pagina de listar departamentos
 		model.addAttribute("departamentos", depService.buscarTodos()); // departamentos e' o nome da variavel que e'
 																		// enviada la para a pagina
-		return "/departamento/lista";
+		return "departamento/lista";
 	}
 
 	@PostMapping("/salvar")
 	public String salvar(@Valid Departamento departamento,BindingResult result, RedirectAttributes attr) {
 		if(result.hasErrors()) {
-			return "/departamento/cadastro";
+			return "departamento/cadastro";
 		}
 		depService.salvar(departamento);
 		attr.addFlashAttribute("success", "Departamento registado com Sucesso!");
@@ -47,13 +47,13 @@ public class DepartamentoController {
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) { //Chama a tela de cadastro com o(s) campo(s) preenchido(s)
 		model.addAttribute("departamento", depService.buscarPorId(id));
-		return "/departamento/cadastro";
+		return "departamento/cadastro";
 	}
 
 	@PostMapping("/editar")
 	public String editar(@Valid Departamento departamento,BindingResult result , RedirectAttributes attr) {
 		if(result.hasErrors()) {
-			return "/departamento/cadastro";
+			return "departamento/cadastro";
 		}
 		depService.editar(departamento);
 		attr.addFlashAttribute("success", "Departamento actualizado com Sucesso!");

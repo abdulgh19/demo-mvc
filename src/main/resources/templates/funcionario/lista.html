@@ -93,23 +93,23 @@
 	                    <thead>
 	                    <tr>
 	                        <th>#</th>
-	                        <th>Nome</th>
-	                        <th>Salário</th>
-	                        <th>Departamento</th>
-	                        <th>Cargo</th>
-	                        <th>Endereço</th>
-	                        <th>Data de Entrada</th>
-	                        <th>Data de Saída</th>
-	                        <th>Ação</th>
+	                        <th th:text="#{tabela.funcionario.col.nome}"></th>
+	                        <th th:text="#{tabela.funcionario.col.salario}"></th>
+	                        <th th:text="#{tabela.funcionario.col.departamento}"></th>
+	                        <th th:text="#{tabela.funcionario.col.cargo}"></th>
+	                        <th th:text="#{tabela.funcionario.col.endereco}"></th>
+	                        <th th:text="#{tabela.funcionario.col.dataEntrada}"></th>
+	                        <th th:text="#{tabela.funcionario.col.dataSaida}"></th>
+	                        <th th:text="#{tabela.funcionario.col.acao}"></th>
 	                    </tr>
 	                    </thead>
 	                    <tbody>
 	                    <tr th:each ="f : ${funcionarios}">
-	                        <td th:text="${f.id}">1</td>
-	                        <td th:text="${f.nome}">Jorge da Silva</td>
-	                        <td th:text="|${{f.salario}} MZN|">R$ 3.500,99</td> <!-- Formata o salario conforme o LOCATE da aplicacao, neste caso o Servidor  -->
-	                        <td th:text="${f.cargo.departamento.nome}" >Recursos Humanos</td>
-	                        <td th:text="${f.cargo.nome}">Auxiliar de RH</td>
+	                        <td th:text="${f.id}"></td>
+	                        <td th:text="${f.nome}"></td>
+	                        <td th:text="|${{f.salario}} MZN|"></td> <!-- Formata o salario conforme o LOCATE da aplicacao, neste caso o Servidor  -->
+	                        <td th:text="${f.cargo.departamento.nome}" ></td>
+	                        <td th:text="${f.cargo.nome}"></td>
 	                        <td>
 	                            <button type="button" class="btn btn-secondary btn-sm" data-container="body"
 	                                    data-toggle="popover" data-placement="top"
